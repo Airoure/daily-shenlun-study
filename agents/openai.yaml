@@ -1,0 +1,4 @@
+interface:
+  display_name: "每日申论学习"
+  short_description: "Collect current materials for Shenlun practice"
+  default_prompt: "Use $daily-shenlun-study to collect current materials and start today's Shenlun practice."
