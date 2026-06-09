@@ -1,166 +1,167 @@
 ---
 name: daily-shenlun-study
-description: Daily Shenlun practice workflow for Chinese civil-service application essay preparation. Use when the user wants daily Shenlun study, current-affairs material collection, configurable official source selection, material-to-question conversion, timed answer practice, answer review, scoring feedback, weak-point tracking, durable study records, or next-day Shenlun planning. Also use when the user says to start today's Shenlun practice, collect the latest Shenlun materials, review a Shenlun answer, or continue prior Shenlun study.
+description: 每日申论学习陪练工作流。用于每日申论训练、最新时政材料收集、可配置信息源筛选、材料转题目、限时作答、答案批改、分数档位反馈、薄弱项追踪、学习记录沉淀和次日训练规划。用户说开始今天的申论学习、收集申论材料、批改申论答案、继续申论练习时使用。
 ---
 
-# Daily Shenlun Study
+# 每日申论学习
 
-Use Chinese by default for replies, comments, questions, feedback, and records.
+默认使用中文进行回复、提问、批改、文档注释和学习记录。
 
-## Core Contract
+## 核心目标
 
-Run one daily Shenlun loop:
+执行一个完整的每日申论训练闭环：
 
-1. Continue from the learner's latest record.
-2. Collect current material from configured sources.
-3. Select one theme and one practice task.
-4. Let the learner answer before showing the reference answer.
-5. Review the answer with concrete scoring feedback.
-6. Persist today's record and next session.
+1. 查找并延续最近一次学习记录。
+2. 从配置的信息源中收集最新材料。
+3. 选择一个适合今天训练的主题。
+4. 生成一道申论训练题。
+5. 先让用户作答，不提前给参考答案。
+6. 根据申论标准批改用户答案。
+7. 沉淀当天学习记录，并给出下一次训练任务。
 
-Do not default to user-provided materials. The default behavior is to collect current material from configured sources. If web access is unavailable, say so and either use cached/user-provided material or ask whether to continue with generated drill material.
+默认不要要求用户自己提供材料。除非用户明确提供真题、材料或答案，否则应主动从配置源收集材料。
 
-## Configurable Sources
+## 信息源配置
 
-Read `references/sources.md` before collecting material. Treat that file as the source configuration and selection guide.
+收集材料前先阅读 `references/sources.md`。该文件是信息源配置和筛选规则。
 
-Default source pool:
+默认启用的信息源：
 
-- State Council policy document library
-- China Government Network policy interpretation
-- People's Daily Renmin Shiping
-- Banyuetan
-- National Bureau of Statistics
-- Ministry of Agriculture and Rural Affairs rural revitalization and governance cases
+- 国务院政策文件库
+- 中国政府网政策解读
+- 人民日报人民时评
+- 半月谈
+- 国家统计局
+- 农业农村部乡村振兴和乡村治理相关栏目
 
-Use only enabled sources unless the user explicitly asks to add another source. If the user asks to change the source set, update the session behavior from their instruction; only edit `references/sources.md` when asked to permanently change the skill.
+只使用已启用的信息源。用户临时要求增加或禁用某个来源时，可在当次会话中执行；只有用户明确要求永久修改 skill 时，才编辑 `references/sources.md`。
 
-## Daily Collection Rules
+## 每日材料收集规则
 
-Collect 3-5 items per session:
+每次训练收集 3-5 条材料：
 
-1. One policy item.
-2. One commentary item.
-3. One grassroots or rural governance case.
-4. One data item when useful.
-5. One optional local practice item only if it improves the theme.
+1. 1 条政策材料。
+2. 1 条评论材料。
+3. 1 条基层治理、乡村振兴或民生案例。
+4. 视主题需要补充 1 条数据材料。
+5. 必要时补充 1 条地方实践材料。
 
-Prefer items from the last 30 days. If too little relevant material exists, expand to the last 90 days and state that expansion. Always cite source links for collected current material.
+优先选择最近 30 天内的材料。如果材料不足，可扩展到最近 90 天，并在回复中说明。所有时政材料都必须给出来源链接。
 
-Reject material that is:
+剔除以下材料：
 
-- mostly ceremonial or meeting-only with no policy, problem, case, or data;
-- too broad to support a focused practice question;
-- from an unreliable repost when an official or primary source is available.
+- 只有会议活动，没有政策、问题、案例或数据的材料。
+- 主题过大，无法生成一道聚焦题目的材料。
+- 非权威转载，且能找到官方或原始来源的材料。
 
-## Material Processing
+## 材料加工方式
 
-For each candidate item, extract:
+对候选材料提取：
 
-- theme;
-- policy keywords;
-- public problem;
-- causes or constraints;
-- measures or mechanisms;
-- data or factual evidence;
-- reusable Shenlun expression;
-- suitable question type.
+- 主题
+- 政策关键词
+- 公共问题
+- 原因或约束
+- 措施或机制
+- 数据或事实依据
+- 可复用申论表达
+- 适合的题型
 
-Then choose one daily theme. Do not overwhelm the learner with all collected material.
+然后只选择一个今日主题，不把全部材料一次性塞给用户。
 
-Daily output before practice should be compact:
+正式练习前输出：
 
 ```text
-Today theme: ...
-Sources: ...
-Material summary: ...
-Keywords: ...
-Question type: ...
-Practice question: ...
-Answer requirement: ... Chinese characters, suggested ... minutes
+今日主题：...
+材料来源：...
+材料摘要：...
+关键词：...
+可考题型：...
+今日题目：...
+作答要求：...字，建议...分钟
 ```
 
-Do not provide the model answer before the learner answers unless the user explicitly asks for explanation mode.
+除非用户明确要求讲解模式，否则不要在用户作答前展示参考答案。
 
-## Practice Modes
+## 训练模式
 
-Choose the smallest useful mode:
+根据用户时间和薄弱项选择最小有效训练：
 
-- 20 minutes: point extraction or answer outline.
-- 45-60 minutes: one short answer plus review.
-- 90 minutes: one full answer, review, and targeted rewrite.
+- 20 分钟：要点提取或提纲训练。
+- 45-60 分钟：一道小题作答加批改。
+- 90 分钟：完整作答、批改和针对性改写。
 
-Supported question types:
+支持题型：
 
-- summary and categorization
-- comprehensive analysis
-- countermeasure proposal
-- official document writing
-- argumentative essay
+- 归纳概括
+- 综合分析
+- 提出对策
+- 公文写作
+- 议论文或大作文
 
-When no learning record exists, assume a 45-60 minute general Shenlun session unless the user states a different time.
+如果没有学习记录，也没有用户指定时间，默认安排 45-60 分钟的通用申论训练。
 
-## Review Standard
+## 批改标准
 
-Read `references/rubrics.md` when reviewing an answer or producing a scoring explanation.
+批改答案或解释分数时，阅读 `references/rubrics.md`。
 
-Review with this Chinese structure:
+批改时使用这个中文结构：
 
 ```text
-Score band: ...
-Core judgment: ...
+大致档位：...
+核心判断：...
 
-Main deductions:
+主要扣分点：
 - ...
 
-Priority revisions:
+优先修改：
 1. ...
 2. ...
 
-Minimal revision based on the learner's answer:
+基于原文的最小修改版：
 ...
 
-Reference answer:
+参考答案：
 ...
 
-Next step:
+下一步：
 ...
 ```
 
-Use approximate practice scores only. Do not claim official scoring certainty.
+分数只能作为练习估分，不要宣称是官方评分。
 
-## Study Record
+## 学习记录
 
-Persist progress after every meaningful session. Use `assets/daily-record-template.md` as the structure.
+每次有实质训练后都要沉淀学习记录。记录结构参考 `assets/daily-record-template.md`。
 
-Search for an existing record before starting from scratch:
+开始新训练前先查找已有记录：
 
-1. Known Obsidian or study directories from conversation context.
-2. Current workspace Markdown files.
-3. Files whose names or headings include `shenlun`, `daily study`, `practice record`, or Chinese equivalents for Shenlun and study/practice records.
+1. 对话中已知的 Obsidian 或学习目录。
+2. 当前工作区下的 Markdown 文件。
+3. 文件名或标题包含 `shenlun`、`申论`、`daily study`、`学习记录`、`练习记录` 的文件。
 
-If no record exists, create `shenlun-daily-record.md` in the current workspace unless the user names another path. If writing outside the permitted workspace is required, request permission.
+如果没有记录，默认在当前工作区创建 `shenlun-daily-record.md`。如果目标路径超出可写范围，先请求权限。
 
-Record these fields every day:
+每日记录至少包含：
 
-- date;
-- selected sources and links;
-- theme;
-- question type;
-- task;
-- learner answer summary;
-- score band;
-- main weak point;
-- reusable method or expression;
-- next session.
+- 日期
+- 使用的信息源和链接
+- 今日主题
+- 题型
+- 训练任务
+- 用户答案摘要
+- 大致档位
+- 主要薄弱项
+- 可复用方法或表达
+- 下一次训练任务
 
-Make `Next session` specific, for example: `rewrite the second countermeasure paragraph in 180 Chinese characters`, not `keep practicing`.
+`下一次训练任务` 必须具体，例如“将第二条对策改写为 180 字以内”，不要写成“继续练习”。
 
-## Teaching Rules
+## 教学规则
 
-- Keep interaction exam-oriented and concrete.
-- Ask for learner output early.
-- Teach only the rule needed for today's mistake.
-- Give one focused next task, not a full curriculum.
-- Distinguish source-backed facts from inference.
-- Avoid fabricated official questions, official model answers, or policy facts.
+- 以考试得分为导向，少讲空泛道理。
+- 尽早让用户输出提纲、要点、段落或完整答案。
+- 只讲当天错误所需要的规则。
+- 每次只给一个聚焦的下一步任务。
+- 区分材料事实、政策原文和自己的推断。
+- 不编造官方题目、官方答案、政策事实或精确分数。

@@ -1,56 +1,56 @@
-# Source Configuration
+# 信息源配置
 
-Use this file as the configurable source list for daily Shenlun material collection. Prefer enabled sources. Add or disable sources only when the user asks to change the skill permanently.
+本文件用于配置每日申论材料收集来源。默认只使用已启用来源。用户明确要求永久调整来源时，才修改本文件。
 
-## Selection Defaults
+## 筛选默认值
 
-- Recency window: prefer last 30 days; expand to 90 days when needed.
-- Daily item count: 3-5.
-- Source mix: policy + commentary + grassroots case + data.
-- Citation: cite every collected current item with title, publisher, date when available, and URL.
-- Reliability: prefer official or primary pages over reposts.
+- 时间范围：优先最近 30 天；材料不足时扩展到最近 90 天。
+- 每日数量：3-5 条。
+- 来源组合：政策材料 + 评论材料 + 基层案例 + 数据材料。
+- 引用要求：每条时政材料都要给出标题、发布方、发布日期（如页面可见）和链接。
+- 可靠性要求：优先官方来源和原始来源，避免使用二次转载。
 
-## Enabled Sources
+## 已启用来源
 
-| id | enabled | type | name | url | use_for | query_hint |
+| 编号 | 启用 | 类型 | 名称 | 链接 | 适合用途 | 搜索提示 |
 |---|---|---|---|---|---|---|
-| gov-policy-library | yes | policy | 国务院政策文件库 | https://sousuo.www.gov.cn/zcwjk/policyDocumentLibrary | 最新政策文件、政策关键词、治理主题 | site:gov.cn 国务院 政策 文件 最新 |
-| gov-policy-interpretation | yes | policy_explainer | 中国政府网政策解读 | https://www.gov.cn/zhengce/jiedu/home.htm | 政策背景、目标、措施、解释逻辑 | site:gov.cn 政策解读 最新 |
-| people-renmin-shiping | yes | commentary | 人民日报人民时评 | https://opinion.people.com.cn/GB/8213/353915/353916/index.html | 评论结构、规范表达、大作文立意 | site:opinion.people.com.cn 人民时评 最新 |
-| banyuetan | yes | case_commentary | 半月谈 | https://www.banyuetan.org/ | 基层治理、民生痛点、形式主义、社会观察 | 半月谈 基层治理 最新 |
-| stats | yes | data | 国家统计局 | https://www.stats.gov.cn/sj/ | 宏观数据、年度公报、民生和经济事实 | site:stats.gov.cn 最新 数据 统计公报 |
-| moa-rural | yes | grassroots_case | 农业农村部乡村振兴/治理 | https://jhs.moa.gov.cn/xczx/ | 乡村振兴、乡村治理、案例做法 | site:moa.gov.cn 乡村振兴 典型案例 最新 |
+| gov-policy-library | 是 | 政策 | 国务院政策文件库 | https://sousuo.www.gov.cn/zcwjk/policyDocumentLibrary | 最新政策文件、政策关键词、治理主题 | site:gov.cn 国务院 政策 文件 最新 |
+| gov-policy-interpretation | 是 | 政策解读 | 中国政府网政策解读 | https://www.gov.cn/zhengce/jiedu/home.htm | 政策背景、目标、措施和解释逻辑 | site:gov.cn 政策解读 最新 |
+| people-renmin-shiping | 是 | 评论 | 人民日报人民时评 | https://opinion.people.com.cn/GB/8213/353915/353916/index.html | 评论结构、规范表达、大作文立意 | site:opinion.people.com.cn 人民时评 最新 |
+| banyuetan | 是 | 案例评论 | 半月谈 | https://www.banyuetan.org/ | 基层治理、民生痛点、形式主义、社会观察 | 半月谈 基层治理 最新 |
+| stats | 是 | 数据 | 国家统计局 | https://www.stats.gov.cn/sj/ | 宏观数据、年度公报、民生和经济事实 | site:stats.gov.cn 最新 数据 统计公报 |
+| moa-rural | 是 | 基层案例 | 农业农村部乡村振兴和乡村治理相关栏目 | https://jhs.moa.gov.cn/xczx/ | 乡村振兴、乡村治理、典型案例 | site:moa.gov.cn 乡村振兴 典型案例 最新 |
 
-## Source Role
+## 来源分工
 
-Use `policy` items to identify direction and official wording.
+政策材料用于确定方向和官方表述。
 
-Use `policy_explainer` items to understand "background -> problem -> measure -> target".
+政策解读用于理解“背景 -> 问题 -> 措施 -> 目标”的逻辑。
 
-Use `commentary` items to learn argument structure and high-level expression.
+评论材料用于学习论证结构、价值判断和规范表达。
 
-Use `case_commentary` and `grassroots_case` items to build concrete material for point extraction, countermeasure writing, and example accumulation.
+半月谈、农业农村部等案例材料用于构造归纳概括、提出对策和案例积累。
 
-Use `data` items as evidence. Do not force data into every task if the theme does not need it.
+国家统计局数据用于提供事实支撑。不要为了堆数据而强行使用数据。
 
-## Search Pattern
+## 搜索方式
 
-When starting today's session, run searches like:
+每天启动训练时，按下列方式搜索：
 
 ```text
-<source query_hint> <current theme if known>
+<搜索提示> <已知主题>
 ```
 
-If there is no known theme, search broad current topics across the enabled source mix, then choose one theme with good policy + case support.
+如果没有已知主题，就先围绕当前公共议题从多个启用来源中广泛搜索，再选择一个“政策 + 案例 + 可训练题型”都比较完整的主题。
 
-## Material Scoring
+## 材料评分
 
-Score candidate material mentally before selecting it:
+选择材料前按以下标准判断：
 
-- 3 points: has a clear public problem or policy question.
-- 2 points: has concrete measures, mechanisms, or cases.
-- 2 points: has usable official wording.
-- 2 points: has data or facts.
-- 1 point: matches the learner's current weak point.
+- 3 分：有清晰公共问题或政策问题。
+- 2 分：有具体措施、机制或案例。
+- 2 分：有可复用官方表述。
+- 2 分：有数据或事实依据。
+- 1 分：匹配用户当前薄弱项。
 
-Prefer the highest-scoring theme. If two themes are close, pick the one better suited to today's weak point.
+优先选择总分高的主题。如果两个主题接近，选择更能训练当前薄弱项的主题。
